@@ -1,23 +1,23 @@
-import loginTypes from './loginTypes';
+import {actionCreators} from './actions';
 
 const initialState = {
   loading: false,
   error: '',
 };
 
-export default (state = initialState, {type, payload}) => {
+const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
-    case loginTypes.LOGIN:
+    case actionCreators.LOGIN:
       return {
         ...state,
         loading: true,
       };
-    case loginTypes.LOGIN_SUCCESS:
+    case actionCreators.LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
       };
-    case loginTypes.LOGIN_FAILURE:
+    case actionCreators.LOGIN_FAILURE:
       return {
         ...state,
         loading: false,
@@ -27,3 +27,5 @@ export default (state = initialState, {type, payload}) => {
       return state;
   }
 };
+
+export default reducer;

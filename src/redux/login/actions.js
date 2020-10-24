@@ -1,5 +1,12 @@
 import loginTypes from './loginTypes';
 
+const actionCreators = {
+  LOGIN: 'LOGIN',
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_FAILURE: 'LOGIN_FAILURE',
+  LOGOUT: 'LOGOUT',
+};
+
 const login = (payload) => ({
   type: loginTypes.LOGIN,
   payload,
@@ -19,4 +26,4 @@ const logout = () => ({
   type: loginTypes.LOGOUT,
 });
 
-export {login, loginSuccess, loginFailure, logout};
+export {actionCreators, login, loginSuccess, loginFailure, logout};
