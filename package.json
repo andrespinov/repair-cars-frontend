@@ -2,6 +2,7 @@
   "name": "repair-cars-frontend",
   "version": "0.1.0",
   "private": true,
+  "contributors": ["Juan C. Morales <camov1209@gmail.com>", "Andrés Pino <andres.pinov@udea.edu.co>"],
   "eslintConfig": {
     "extends": "react-app"
   },
