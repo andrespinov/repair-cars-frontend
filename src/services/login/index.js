@@ -1,8 +1,8 @@
-import fetch from '../fetch';
+import api from '../../config/api';
 import routes from './routes';
 
 const login = async () => {
-  return fetch('post', routes.LOGIN);
+  return api.post(routes.LOGIN);
 };
 
 export {login};
