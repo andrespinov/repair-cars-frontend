@@ -9,8 +9,7 @@
   },
   "extends": ["eslint:recommended", "eslint-config-prettier"],
   "rules": {
-    "strict": ["error", "never"],
-    "no-unused-vars": "error"
+    "strict": ["error", "never"]
   },
   "env": {
     "browser": true
