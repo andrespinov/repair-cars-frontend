@@ -1,5 +1,5 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
-import { loginSuccess, loginFailure } from './loginActions'
+import {call, put, takeEvery} from 'redux-saga/effects'
+import {loginSuccess, loginFailure} from './loginActions'
 import loginTypes from './loginTypes'
 import * as services from '../../services/login'
 

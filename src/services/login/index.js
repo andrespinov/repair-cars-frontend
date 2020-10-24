@@ -5,6 +5,4 @@ const login = async () => {
   return fetch('post', routes.LOGIN)
 }
 
-export {
-  login
-}
+export {login}

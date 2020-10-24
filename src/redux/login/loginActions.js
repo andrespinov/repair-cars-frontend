@@ -2,26 +2,21 @@ import loginTypes from './loginTypes'
 
 const login = (payload) => ({
   type: loginTypes.LOGIN,
-  payload
+  payload,
 })
 
 const loginSuccess = (payload) => ({
   type: loginTypes.LOGIN_SUCCESS,
-  payload
+  payload,
 })
 
 const loginFailure = (payload) => ({
   type: loginTypes.LOGIN_FAILURE,
-  payload
+  payload,
 })
 
 const logout = () => ({
-  type: loginTypes.LOGOUT
+  type: loginTypes.LOGOUT,
 })
 
-export {
-  login,
-  loginSuccess,
-  loginFailure,
-  logout
-}
+export {login, loginSuccess, loginFailure, logout}
