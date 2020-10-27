@@ -1,5 +1,3 @@
-import loginTypes from './loginTypes';
-
 const actionCreators = {
   LOGIN: 'LOGIN',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
@@ -8,22 +6,22 @@ const actionCreators = {
 };
 
 const login = (payload) => ({
-  type: loginTypes.LOGIN,
+  type: actionCreators.LOGIN,
   payload,
 });
 
 const loginSuccess = (payload) => ({
-  type: loginTypes.LOGIN_SUCCESS,
+  type: actionCreators.LOGIN_SUCCESS,
   payload,
 });
 
 const loginFailure = (payload) => ({
-  type: loginTypes.LOGIN_FAILURE,
+  type: actionCreators.LOGIN_FAILURE,
   payload,
 });
 
 const logout = () => ({
-  type: loginTypes.LOGOUT,
+  type: actionCreators.LOGOUT,
 });
 
 export {actionCreators, login, loginSuccess, loginFailure, logout};

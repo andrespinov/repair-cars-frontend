@@ -10,7 +10,9 @@
   "extends": [
     "eslint:recommended",
     "eslint-config-prettier",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
   "rules": {
     "strict": ["error", "never"]
