@@ -1,3 +1,5 @@
+import * as service from '../../services/login'
+
 const actionCreators = {
   LOGIN: 'LOGIN',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
@@ -5,7 +7,19 @@ const actionCreators = {
   LOGOUT: 'LOGOUT',
 };
 
-const login = (payload) => ({
+const login = (payload) => dispatch => {
+  dispatch(loginRequest())
+  return service.login(payload)
+    .then(({ data }) => {
+      if (data.token) {
+        dispatch(loginSuccess(data.token))
+      } else {
+        dispatch(loginFailure(data.message))
+      }
+    })
+}
+
+const loginRequest = (payload) => ({
   type: actionCreators.LOGIN,
   payload,
 });

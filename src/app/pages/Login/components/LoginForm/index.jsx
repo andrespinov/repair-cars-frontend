@@ -4,28 +4,26 @@ import * as Yup from 'yup'
 import { Input, Button } from '../../../../components'
 import { LoginFormContainer } from './styles'
 
-const validationScheme = Yup.object().shape({
-  email: Yup.string().email().required(),
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required(),
   password: Yup.string().required()
 })
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, loading }) => {
 
   return (
     <LoginFormContainer>
       <Formik
-        initialValues={{ email: '', password: '' }}
-        validationScheme={validationScheme}
+        initialValues={{ name: '', password: '' }}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
      >
       {({
         values,
         errors,
         touched,
-        handleChange,
-        handleBlur,
         handleSubmit,
-        isSubmitting
+        setFieldValue
       }) => (
          <div className='form'>
             <div  className='header'>
@@ -33,16 +31,21 @@ const LoginForm = ({ onSubmit }) => {
               <span>Consequat laborum fugiat dolore fugiat culpa cupidatat Lorem elit.</span>
             </div>
            <Input
-              label='Email'
-              value={values.email}
-              onChange={handleChange}
+              name='name'
+              label='Username'
+              value={values.name}
+              onChange={setFieldValue}
+              error={Boolean(touched.name && errors.name)}
            />
            <Input
+              name='password'
               label='Password'
-              value={values.email}
-              onChange={handleChange}
+              value={values.password}
+              onChange={setFieldValue}
+              type='password'
+              error={Boolean(touched.password && errors.password)}
            />
-           <Button className='login-button' title='Login' />
+           <Button className='login-button' title='Login' onClick={handleSubmit} loading={loading} />
          </div>
        )}
        </Formik>

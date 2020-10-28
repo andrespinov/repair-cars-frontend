@@ -2,7 +2,10 @@
   "name": "repair-cars-frontend",
   "version": "0.1.0",
   "private": true,
-  "contributors": ["Juan C. Morales <camov1209@gmail.com>", "Andrés Pino <andres.pinov@udea.edu.co>"],
+  "contributors": [
+    "Juan C. Morales <camov1209@gmail.com>",
+    "Andrés Pino <andres.pinov@udea.edu.co>"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -42,6 +45,7 @@
     "react-scripts": "3.4.3",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.0",
     "yup": "^0.29.3"
