@@ -8,11 +8,11 @@ import loginReducer from '../redux/login/reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['loginReducer']
+  whitelist: ['loginReducer'],
 };
 
 const rootReducer = combineReducers({
-  loginReducer
+  loginReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

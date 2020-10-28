@@ -3,7 +3,7 @@ import {actionCreators} from './actions';
 const initialState = {
   loading: false,
   error: '',
-  token: ''
+  token: '',
 };
 
 const reducer = (state = initialState, {type, payload}) => {
@@ -18,7 +18,7 @@ const reducer = (state = initialState, {type, payload}) => {
         ...state,
         loading: false,
         token: payload,
-        error: ''
+        error: '',
       };
     case actionCreators.LOGIN_FAILURE:
       return {

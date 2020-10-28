@@ -12,9 +12,7 @@ const AppRouter = () => {
   return (
     <Router>
       <Switch>
-        <AuthRoute path="/login">
-          <Login />
-        </AuthRoute>
+        <AuthRoute path="/login" />
         <Route path="/">
           <Redirect to="/login" />
         </Route>
