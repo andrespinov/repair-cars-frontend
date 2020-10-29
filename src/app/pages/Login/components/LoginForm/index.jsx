@@ -1,53 +1,55 @@
-import React from 'react'
-import { Formik } from 'formik'
-import * as Yup from 'yup'
-import { Input, Button } from '../../../../components'
-import { LoginFormContainer } from './styles'
+import {Formik} from 'formik';
+import React from 'react';
+import * as Yup from 'yup';
 
-const validationScheme = Yup.object().shape({
-  email: Yup.string().email().required(),
-  password: Yup.string().required()
-})
+import {Input, Button} from '../../../../components';
 
-const LoginForm = ({ onSubmit }) => {
+import {LoginFormContainer} from './styles';
 
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required(),
+  password: Yup.string().required(),
+});
+
+const LoginForm = ({onSubmit, loading}) => {
   return (
     <LoginFormContainer>
       <Formik
-        initialValues={{ email: '', password: '' }}
-        validationScheme={validationScheme}
+        initialValues={{name: '', password: ''}}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
-     >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        isSubmitting
-      }) => (
-         <div className='form'>
-            <div  className='header'>
-              <h1>Welcome!</h1>
-              <span>Consequat laborum fugiat dolore fugiat culpa cupidatat Lorem elit.</span>
+      >
+        {({values, errors, touched, handleSubmit, setFieldValue}) => (
+          <div className="form">
+            <div className="header">
+              <h1>Iniciar sesión</h1>
             </div>
-           <Input
-              label='Email'
-              value={values.email}
-              onChange={handleChange}
-           />
-           <Input
-              label='Password'
-              value={values.email}
-              onChange={handleChange}
-           />
-           <Button className='login-button' title='Login' />
-         </div>
-       )}
-       </Formik>
+            <Input
+              name="name"
+              label="Username"
+              value={values.name}
+              onChange={setFieldValue}
+              error={Boolean(touched.name && errors.name)}
+            />
+            <Input
+              name="password"
+              label="Password"
+              value={values.password}
+              onChange={setFieldValue}
+              type="password"
+              error={Boolean(touched.password && errors.password)}
+            />
+            <Button
+              className="login-button"
+              title="Login"
+              onClick={handleSubmit}
+              loading={loading}
+            />
+          </div>
+        )}
+      </Formik>
     </LoginFormContainer>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

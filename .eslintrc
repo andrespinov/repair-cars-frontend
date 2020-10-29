@@ -15,7 +15,17 @@
     "plugin:import/warnings"
   ],
   "rules": {
-    "strict": ["error", "never"]
+    "strict": ["error", "never"],
+    "react/prop-types": "off",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "alphabetize": {"order": "asc"},
+        "groups": ["builtin", "external", "parent", "sibling", "index"]
+      }
+    ],
+    "react/self-closing-comp": "error"
   },
   "env": {
     "browser": true

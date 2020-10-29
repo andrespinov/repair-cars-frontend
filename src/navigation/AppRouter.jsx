@@ -6,18 +6,25 @@ import {
   Redirect,
 } from 'react-router-dom';
 import Login from '../app/pages/Login';
-import AuthRoute from './AuthRoute';
+import useAuthState from '../app/hooks/useAuthState';
+import Home from '../app/pages/Home';
+import RouteItem from './components/RouteItem';
+import {ROUTES} from './constants';
 
 const AppRouter = () => {
+  const {isAuthenticated} = useAuthState();
+
   return (
     <Router>
       <Switch>
-        <AuthRoute path="/login">
-          <Login />
-        </AuthRoute>
-        <Route path="/">
-          <Redirect to="/login" />
-        </Route>
+        {ROUTES.map(({redirectTo, path, ...config}) => (
+          <RouteItem
+            key={path}
+            path={path}
+            redirectTo={redirectTo?.(isAuthenticated)}
+            {...config}
+          />
+        ))}
       </Switch>
     </Router>
   );
