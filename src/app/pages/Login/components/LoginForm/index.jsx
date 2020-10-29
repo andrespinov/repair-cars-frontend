@@ -1,7 +1,9 @@
-import React from 'react';
 import {Formik} from 'formik';
+import React from 'react';
 import * as Yup from 'yup';
+
 import {Input, Button} from '../../../../components';
+
 import {LoginFormContainer} from './styles';
 
 const validationSchema = Yup.object().shape({

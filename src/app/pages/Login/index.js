@@ -1,9 +1,10 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+import {useDispatch, useSelector} from 'react-redux';
+
+import {login} from '../../../redux/login/actions';
+
 import LoginForm from './components/LoginForm';
 import {LoginContainer} from './styles';
-import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../../redux/login/actions';
 
 const Login = () => {
   const dispatch = useDispatch();

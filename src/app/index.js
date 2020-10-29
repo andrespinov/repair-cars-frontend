@@ -1,8 +1,9 @@
 import React from 'react';
-import AppRouter from '../navigation/AppRouter';
 import {Provider} from 'react-redux';
-import {store, persistor} from '../config/store';
 import {PersistGate} from 'redux-persist/integration/react';
+
+import {store, persistor} from '../config/store';
+import AppRouter from '../navigation/AppRouter';
 
 function App() {
   return (
