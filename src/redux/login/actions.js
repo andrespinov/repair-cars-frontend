@@ -10,10 +10,10 @@ const actionCreators = {
 const login = (payload) => (dispatch) => {
   dispatch(loginRequest());
   return service.login(payload).then(({data}) => {
-    if (data.token) {
+    if (data?.token) {
       dispatch(loginSuccess(data.token));
     } else {
-      dispatch(loginFailure(data.message));
+      dispatch(loginFailure(data?.message));
     }
   });
 };

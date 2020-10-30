@@ -11,7 +11,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required(),
 });
 
-const LoginForm = ({onSubmit, loading}) => {
+const LoginForm = ({onSubmit, loading, error}) => {
   return (
     <LoginFormContainer>
       <Formik
@@ -39,6 +39,7 @@ const LoginForm = ({onSubmit, loading}) => {
               type="password"
               error={Boolean(touched.password && errors.password)}
             />
+            {Boolean(error) && <div className='error-message'><span>{error}</span></div>}
             <Button
               className="login-button"
               title="Login"
