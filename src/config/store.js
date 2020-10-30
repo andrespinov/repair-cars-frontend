@@ -5,15 +5,17 @@ import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 
 import loginReducer from '../redux/login/reducer';
+import authReducer from '../redux/auth/reducer';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['loginReducer'],
+  whitelist: ['authReducer'],
 };
 
 const rootReducer = combineReducers({
   loginReducer,
+  authReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
