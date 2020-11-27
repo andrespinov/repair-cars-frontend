@@ -8,14 +8,14 @@ import {LoginContainer} from './styles';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const {loading} = useSelector((state) => state.loginReducer);
+  const {loading, error} = useSelector((state) => state.loginReducer);
   const handleLogin = (payload) => {
     dispatch(login(payload));
   };
 
   return (
     <LoginContainer>
-      <LoginForm onSubmit={handleLogin} loading={loading} />
+      <LoginForm onSubmit={handleLogin} loading={loading} error={error} />
     </LoginContainer>
   );
 };
