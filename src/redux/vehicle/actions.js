@@ -42,6 +42,18 @@ const updateVehicle = (payload) => (dispatch) => {
   });
 };
 
+const deleteVehicle = (id) => (dispatch) => {
+  dispatch(deleteVehicleRequest());
+  return service.deleteVehicle(id).then(({data}) => {
+    console.log(data)
+    if (data?.data) {
+      dispatch(deleteVehicleSuccess(data.data));
+    } else {
+      dispatch(deleteVehicleFailure(data?.message));
+    }
+  });
+};
+
 const addVehicleRequest = (payload) => ({
   type: actionCreators.ADD_VEHICLE,
   payload,
@@ -72,4 +84,19 @@ const updateVehicleFailure = (payload) => ({
   payload,
 });
 
-export {actionCreators, addVehicle, updateVehicle};
+const deleteVehicleRequest = (payload) => ({
+  type: actionCreators.DELETE_VEHICLE,
+  payload,
+});
+
+const deleteVehicleSuccess = (payload) => ({
+  type: actionCreators.DELETE_VEHICLE_SUCCESS,
+  payload,
+});
+
+const deleteVehicleFailure = (payload) => ({
+  type: actionCreators.DELETE_VEHICLE_FAILURE,
+  payload,
+});
+
+export {actionCreators, addVehicle, updateVehicle, deleteVehicle};

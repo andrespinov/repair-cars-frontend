@@ -12,6 +12,7 @@ const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case actionCreators.ADD_VEHICLE:
     case actionCreators.UPDATE_VEHICLE:
+    case actionCreators.DELETE_VEHICLE:
       return {
         ...state,
         formLoading: true,
@@ -20,6 +21,7 @@ const reducer = (state = initialState, {type, payload}) => {
 
     case actionCreators.ADD_VEHICLE_SUCCESS:
     case actionCreators.UPDATE_VEHICLE_SUCCESS:
+    case actionCreators.DELETE_VEHICLE_SUCCESS:
       return {
         ...state,
         formLoading: false,
@@ -28,6 +30,7 @@ const reducer = (state = initialState, {type, payload}) => {
 
     case actionCreators.ADD_VEHICLE_FAILURE:
     case actionCreators.UPDATE_VEHICLE_FAILURE:
+    case actionCreators.DELETE_VEHICLE_FAILURE:
       return {
         ...state,
         formLoading: false,
