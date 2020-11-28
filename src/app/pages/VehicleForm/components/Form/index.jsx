@@ -24,18 +24,18 @@ const emptyVehicle = {
   author: ''
 }
 
-const Form = ({onSubmit, loading, error}) => {
+const Form = ({vehicle, onSubmit, loading, error}) => {
   return (
     <FormContainer>
       <Formik
-        initialValues={emptyVehicle}
+        initialValues={vehicle || emptyVehicle}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
         {({values, errors, touched, handleSubmit, setFieldValue}) => (
           <div className="form">
             <div className="header">
-              <h1>Iniciar sesión</h1>
+              <h1>{vehicle ? 'Editar Vehículo' : 'Agregar Vehículo'}</h1>
             </div>
             <Grid container spacing={1}>
               <Grid item xs={12} md={6}>
