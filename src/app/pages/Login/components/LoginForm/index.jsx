@@ -26,14 +26,14 @@ const LoginForm = ({onSubmit, loading, error}) => {
             </div>
             <Input
               name="name"
-              label="Username"
+              label="Ususario"
               value={values.name}
               onChange={setFieldValue}
               error={Boolean(touched.name && errors.name)}
             />
             <Input
               name="password"
-              label="Password"
+              label="Contraseña"
               value={values.password}
               onChange={setFieldValue}
               type="password"
