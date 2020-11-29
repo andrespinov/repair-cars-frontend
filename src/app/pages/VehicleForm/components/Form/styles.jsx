@@ -19,8 +19,11 @@ const FormContainer = styled.div`
     margin-bottom: 10px;
   }
   .form-button {
-    width: 100%;
-    max-width: 200px;
+    width: 150px;
+  }
+  .buttons-container {
+    display: flex;
+    margin-top: 20px;
   }
 `
 
