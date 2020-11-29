@@ -1,7 +1,6 @@
 import {create} from 'apisauce';
 // import SERVICES_PATHS from 'services/login/constants';
 
-
 const api = create({
   baseURL: 'https://app-garage-back.herokuapp.com',
   timeout: 3000,

@@ -1,11 +1,14 @@
 import Home from 'app/pages/Home';
 import Login from 'app/pages/Login';
 import VehiclesList from 'app/pages/VehiclesList';
+import VehicleForm from 'app/pages/VehicleForm';
 
 export const PATHS = {
   VEHICLES: '/vehicles',
   HOME: '/',
   LOGIN: '/login',
+  VEHICLE_FORM: '/formulario-vehiculo',
+  VEHICLE_ID_FORM: '/formulario-vehiculo/:id',
 };
 
 const MAIN_PUBLIC_PATH = PATHS.LOGIN;
@@ -24,6 +27,17 @@ export const ROUTES = [
   {
     path: PATHS.HOME,
     component: Home,
+    redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
+    exact: true
+  },
+  {
+    path: PATHS.VEHICLE_ID_FORM,
+    component: VehicleForm,
+    redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
+  },
+  {
+    path: PATHS.VEHICLE_FORM,
+    component: VehicleForm,
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
   },
 ];
