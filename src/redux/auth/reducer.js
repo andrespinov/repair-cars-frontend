@@ -1,20 +1,23 @@
 import {actionCreators} from '../login/actions';
 
 const initialState = {
-  token: null
+  token: null,
+  user: ''
 };
 
-const reducer = (state = initialState, {type, payload}) => {
+const reducer = (state = initialState, {type, payload, username}) => {
   switch (type) {
     case actionCreators.LOGIN_SUCCESS:
       return {
         ...state,
-        token: payload
+        token: payload,
+        user: username
       };
       case actionCreators.LOGOUT:
       return {
         ...state,
-        token: null
+        token: null,
+        user: ''
       };
     default:
       return state;

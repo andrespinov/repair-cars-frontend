@@ -9,11 +9,11 @@ const actionCreators = {
 
 const login = (payload) => (dispatch) => {
   dispatch(loginRequest());
-  return service.login(payload).then(({data}) => {
-    if (data?.token) {
-      dispatch(loginSuccess(data.token));
+  return service.login(payload).then((response) => {
+    if (response.data?.token) {
+      dispatch(loginSuccess(response.data.token, payload?.name));
     } else {
-      dispatch(loginFailure(data?.message));
+      dispatch(loginFailure(response.data?.message));
     }
   });
 };
@@ -23,9 +23,10 @@ const loginRequest = (payload) => ({
   payload,
 });
 
-const loginSuccess = (payload) => ({
+const loginSuccess = (payload, username) => ({
   type: actionCreators.LOGIN_SUCCESS,
   payload,
+  username,
 });
 
 const loginFailure = (payload) => ({

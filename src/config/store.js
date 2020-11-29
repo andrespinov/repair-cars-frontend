@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 
 import loginReducer from '../redux/login/reducer';
 import authReducer from '../redux/auth/reducer';
+import vehicleReducer from '../redux/vehicle/reducer';
 
 const persistConfig = {
   key: 'root',
@@ -15,7 +16,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   loginReducer,
-  authReducer
+  authReducer,
+  vehicleReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
