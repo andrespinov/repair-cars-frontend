@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { addVehicle, deleteVehicle, updateVehicle } from '../../../redux/vehicle/actions'
 import ConfirmationDialog from '../../components/ConfirmationDialog'
 import Form from './components/Form'
@@ -8,20 +8,28 @@ import Form from './components/Form'
 const VehicleForm = () => {
   const { id } = useParams()
   const dispatch = useDispatch();
-  const {vehicles, formLoading, formError} = useSelector((state) => state.vehicleReducer);
+  const history = useHistory();
+  const {vehicles, saveLoading, deleteLoading, formError} = useSelector((state) => state.vehicleReducer);
+  const {user} = useSelector((state) => state.authReducer);
   const [vehicleToEdit, setVehicleToEdit] = useState(null);
   const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
   
   useEffect(() => {
-    const vehicleWithId = id ? vehicles.find(vehicle => vehicle.id === id) : null
+    const vehicleWithId = id ? vehicles.find(vehicle => vehicle.id == id) : null
+    console.log(vehicleWithId)
     setVehicleToEdit(vehicleWithId || null)
   }, [id, vehicles])
   
   const onSubmit = useCallback((vehicle) => {
+    const onSuccess = () => history.push('/vehicles')
+    const payload = {
+      ...vehicle,
+      author: user
+    }
     if (vehicleToEdit) {
-      dispatch(updateVehicle(vehicle))
+      dispatch(updateVehicle(payload, onSuccess))
     } else {
-      dispatch(addVehicle(vehicle))
+      dispatch(addVehicle(payload, onSuccess))
     }
   }, [vehicleToEdit, dispatch])
 
@@ -36,7 +44,8 @@ const VehicleForm = () => {
     <div>
       <Form
         vehicle={vehicleToEdit}
-        loading={formLoading}
+        saveLoading={saveLoading}
+        deleteLoading={deleteLoading}
         onSubmit={onSubmit}
         onDelete={() => setOpenConfirmDialog(true)}
         error={formError}

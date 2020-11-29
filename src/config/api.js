@@ -18,14 +18,14 @@ const apiMock = create({
   },
 });
 
-api.addResponseTransform((response) => {
+/* api.addResponseTransform((response) => {
   response.data = eval(response.data);
 });
 
 api.addAsyncResponseTransform(async (response) => {
   if (!response.ok && response.config?.url !== SERVICES_PATHS.LOGIN) {
     const mockedResponse = await apiMock.any({
-      method: response.config.method,
+      method: response.config?.method,
       url: response.config?.url,
     });
 
@@ -37,6 +37,6 @@ api.addAsyncResponseTransform(async (response) => {
     response.headers = mockedResponse.headers;
     response.config = mockedResponse.config;
   }
-});
+}); */
 
 export default api;

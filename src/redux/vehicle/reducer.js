@@ -4,7 +4,8 @@ const initialState = {
   vehicles: [],
   loading: false,
   error: '',
-  formLoading: false,
+  saveLoading: false,
+  deleteLoading: false,
   formError: ''
 };
 
@@ -12,28 +13,45 @@ const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case actionCreators.ADD_VEHICLE:
     case actionCreators.UPDATE_VEHICLE:
-    case actionCreators.DELETE_VEHICLE:
       return {
         ...state,
-        formLoading: true,
+        saveLoading: true,
         formError: '',
       };
 
     case actionCreators.ADD_VEHICLE_SUCCESS:
     case actionCreators.UPDATE_VEHICLE_SUCCESS:
-    case actionCreators.DELETE_VEHICLE_SUCCESS:
       return {
         ...state,
-        formLoading: false,
+        saveLoading: false,
         formError: '',
       };
 
     case actionCreators.ADD_VEHICLE_FAILURE:
     case actionCreators.UPDATE_VEHICLE_FAILURE:
+      return {
+        ...state,
+        saveLoading: false,
+        formError: payload,
+      };
+    case actionCreators.DELETE_VEHICLE:
+      return {
+        ...state,
+        deleteLoading: true,
+        formError: '',
+      };
+  
+    case actionCreators.DELETE_VEHICLE_SUCCESS:
+      return {
+        ...state,
+        deleteLoading: false,
+        formError: '',
+      };
+  
     case actionCreators.DELETE_VEHICLE_FAILURE:
       return {
         ...state,
-        formLoading: false,
+        deleteLoading: false,
         formError: payload,
       };
     default:

@@ -11,8 +11,7 @@ const validationSchema = Yup.object().shape({
   color: Yup.string().required(),
   type: Yup.string().required(),
   brand: Yup.string().required(),
-  model: Yup.string().required(),
-  author: Yup.string()
+  model: Yup.string().required()
 });
 
 const emptyVehicle = {
@@ -20,17 +19,17 @@ const emptyVehicle = {
   color: '',
   type: '',
   brand: '',
-  model: '',
-  author: ''
-}
+  model: ''
+};
 
-const Form = ({vehicle, onSubmit, onDelete, loading, error}) => {
+const Form = ({vehicle, onSubmit, onDelete, saveLoading, deleteLoading, error}) => {
   return (
     <FormContainer>
       <Formik
         initialValues={vehicle || emptyVehicle}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
+        enableReinitialize
       >
         {({values, errors, touched, handleSubmit, setFieldValue}) => (
           <div className='form'>
@@ -83,15 +82,6 @@ const Form = ({vehicle, onSubmit, onDelete, loading, error}) => {
                   error={Boolean(touched.color && errors.color)}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Input
-                  name='author'
-                  label='Autor'
-                  value={values.author}
-                  onChange={setFieldValue}
-                  error={Boolean(touched.author && errors.author)}
-                />
-              </Grid>
             </Grid>
             {Boolean(error) && <div className='error-message'><span>{error}</span></div>}
             <div className='buttons-container'>
@@ -100,7 +90,7 @@ const Form = ({vehicle, onSubmit, onDelete, loading, error}) => {
                   className='form-button'
                   title='Eliminar'
                   onClick={onDelete}
-                  loading={loading}
+                  loading={deleteLoading}
                   style={{ marginRight: 20 }}
                 />
               )}
@@ -108,7 +98,7 @@ const Form = ({vehicle, onSubmit, onDelete, loading, error}) => {
                 className='form-button'
                 title='Guardar'
                 onClick={handleSubmit}
-                loading={loading}
+                loading={saveLoading}
               />
             </div>
           </div>

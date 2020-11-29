@@ -18,38 +18,41 @@ const actionCreators = {
   DELETE_VEHICLE_FAILURE: 'DELETE_VEHICLE_FAILURE',
 };
 
-const addVehicle = (payload) => (dispatch) => {
+const addVehicle = (payload, onSuccess) => (dispatch) => {
   dispatch(addVehicleRequest());
-  return service.addVehicle(payload).then(({data}) => {
-    console.log(data)
-    if (data?.data) {
-      dispatch(addVehicleSuccess(data.data));
+  return service.addVehicle(payload).then((response) => {
+    console.log(response)
+    if (response?.data?.data) {
+      dispatch(addVehicleSuccess(response.data.data));
+      if (onSuccess) onSuccess();
     } else {
-      dispatch(addVehicleFailure(data?.message));
+      dispatch(addVehicleFailure(response?.data?.message));
     }
   });
 };
 
-const updateVehicle = (payload) => (dispatch) => {
+const updateVehicle = (payload, onSuccess) => (dispatch) => {
   dispatch(updateVehicleRequest());
-  return service.updateVehicle(payload).then(({data}) => {
-    console.log(data)
-    if (data?.data) {
-      dispatch(updateVehicleSuccess(data.data));
+  return service.updateVehicle(payload).then((response) => {
+    console.log(response)
+    if (response?.data?.data) {
+      dispatch(updateVehicleSuccess(response.data.data));
+      if (onSuccess) onSuccess();
     } else {
-      dispatch(updateVehicleFailure(data?.message));
+      dispatch(updateVehicleFailure(response?.data?.message));
     }
   });
 };
 
-const deleteVehicle = (id) => (dispatch) => {
+const deleteVehicle = (id, onSuccess) => (dispatch) => {
   dispatch(deleteVehicleRequest());
-  return service.deleteVehicle(id).then(({data}) => {
-    console.log(data)
-    if (data?.data) {
-      dispatch(deleteVehicleSuccess(data.data));
+  return service.deleteVehicle(id).then((response) => {
+    console.log(response)
+    if (response?.data?.data) {
+      dispatch(deleteVehicleSuccess(response.data.data));
+      if (onSuccess) onSuccess();
     } else {
-      dispatch(deleteVehicleFailure(data?.message));
+      dispatch(deleteVehicleFailure(response?.data?.message));
     }
   });
 };
