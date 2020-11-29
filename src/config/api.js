@@ -1,5 +1,5 @@
 import {create} from 'apisauce';
-import SERVICES_PATHS from 'services/constants';
+import SERVICES_PATHS from 'services/login/constants';
 
 
 const api = create({
@@ -16,6 +16,10 @@ const apiMock = create({
   headers: {
     'Content-Type': 'application/json',
   },
+});
+
+api.addResponseTransform((response) => {
+  response.data = eval(response.data);
 });
 
 api.addAsyncResponseTransform(async (response) => {
