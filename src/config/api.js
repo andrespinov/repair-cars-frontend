@@ -20,15 +20,18 @@ const apiMock = create({
 
 api.addAsyncResponseTransform(async (response) => {
   if (!response.ok && response.config?.url !== ROUTES.LOGIN) {
-    const mockResponse = await apiMock.any({
+    const mockedResponse = await apiMock.any({
       method: response.config.method,
       url: response.config?.url,
     });
 
-    response.data = mockResponse.data;
-    response.ok = mockResponse.ok;
-    response.problem = mockResponse.problem;
-    response.status = mockResponse.status;
+    response.data = mockedResponse.data;
+    response.duration = mockedResponse.duration;
+    response.problem = mockedResponse.problem;
+    response.ok = mockedResponse.ok;
+    response.status = mockedResponse.status;
+    response.headers = mockedResponse.headers;
+    response.config = mockedResponse.config;
   }
 });
 
