@@ -1,5 +1,3 @@
-import PATHS from 'constants/paths';
-
 import Home from 'app/pages/Home';
 import Login from 'app/pages/Login';
 import VehiclesList from 'app/pages/VehiclesList';
@@ -10,7 +8,7 @@ export const PATHS = {
   login: '/login'
 }
 
-export const ROUTES_PATHS = {
+export const PATHS = {
   VEHICLES: '/vehicles',
   HOME: '/',
   LOGIN: '/login',
@@ -22,6 +20,10 @@ const MAIN_PUBLIC_PATH = PATHS.LOGIN;
 const MAIN_PRIVATE_PATH = PATHS.HOME;
 
 export const ROUTES = [
+  {
+    path: PATHS.VEHICLES,
+    component: VehiclesList,
+  },
   {
     path: PATHS.LOGIN,
     component: Login,
@@ -42,9 +44,5 @@ export const ROUTES = [
     path: PATHS.vehicleForm,
     component: VehicleForm,
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
-  },
-  {
-    path: PATHS.VEHICLES,
-    component: VehiclesList,
   },
 ];
