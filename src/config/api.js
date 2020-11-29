@@ -1,6 +1,6 @@
-import ROUTES from 'constants/routes';
-
 import {create} from 'apisauce';
+import SERVICES_PATHS from 'services/constants';
+
 
 const api = create({
   baseURL: 'https://app-garage-back.herokuapp.com',
@@ -19,7 +19,7 @@ const apiMock = create({
 });
 
 api.addAsyncResponseTransform(async (response) => {
-  if (!response.ok && response.config?.url !== ROUTES.LOGIN) {
+  if (!response.ok && response.config?.url !== SERVICES_PATHS.LOGIN) {
     const mockedResponse = await apiMock.any({
       method: response.config.method,
       url: response.config?.url,
