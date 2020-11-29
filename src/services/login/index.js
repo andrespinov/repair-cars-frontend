@@ -1,9 +1,9 @@
-import api from '../../config/api';
+import ROUTES from 'constants/routes';
 
-import routes from './routes';
+import api from 'config/api';
 
 const login = async (payload) => {
-  return api.post(routes.LOGIN, payload);
+  return api.post(ROUTES.LOGIN, payload);
 };
 
 export {login};

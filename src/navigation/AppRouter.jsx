@@ -1,13 +1,8 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
-import Login from '../app/pages/Login';
+import {BrowserRouter as Router, Switch} from 'react-router-dom';
+
 import useAuthState from '../app/hooks/useAuthState';
-import Home from '../app/pages/Home';
+
 import RouteItem from './components/RouteItem';
 import {ROUTES} from './constants';
 
