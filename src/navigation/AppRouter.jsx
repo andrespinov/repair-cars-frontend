@@ -8,7 +8,6 @@ import {ROUTES} from './constants';
 
 const AppRouter = () => {
   const {isAuthenticated} = useAuthState();
-  // const isAuthenticated = true;
 
   return (
     <Router>
