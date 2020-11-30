@@ -1,9 +1,11 @@
+import {Grid} from '@material-ui/core';
 import { Formik } from 'formik'
 import React from 'react'
-import { Button, Input } from '../../../../components';
-import { FormContainer } from './styles'
 import * as Yup from 'yup';
-import { Grid } from '@material-ui/core';
+
+import { Button, Input } from '../../../../components';
+
+import {FormContainer} from './styles';
 
 
 const validationSchema = Yup.object().shape({

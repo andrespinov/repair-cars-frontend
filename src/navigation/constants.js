@@ -1,7 +1,7 @@
 import Home from 'app/pages/Home';
 import Login from 'app/pages/Login';
-import VehiclesList from 'app/pages/VehiclesList';
 import VehicleForm from 'app/pages/VehicleForm';
+import VehiclesList from 'app/pages/VehiclesList';
 
 export const PATHS = {
   VEHICLES: '/vehicles',
