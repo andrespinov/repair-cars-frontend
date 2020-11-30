@@ -27,7 +27,7 @@ function useVehicles() {
           error,
         });
       });
-  }, []);
+  }, [setVehicles]);
 
   return [vehicles, setVehicles];
 }
