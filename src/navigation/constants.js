@@ -28,7 +28,7 @@ export const ROUTES = [
     path: PATHS.HOME,
     component: Home,
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
-    exact: true
+    exact: true,
   },
   {
     path: PATHS.VEHICLE_ID_FORM,

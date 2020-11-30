@@ -2,7 +2,7 @@ import {actionCreators} from './actions';
 
 const initialState = {
   loading: false,
-  error: ''
+  error: '',
 };
 
 const reducer = (state = initialState, {type, payload}) => {

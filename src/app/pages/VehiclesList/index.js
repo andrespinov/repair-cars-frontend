@@ -10,9 +10,9 @@ import {makeStyles} from '@material-ui/core/styles';
 import useVehicles from 'app/hooks/useVehicles';
 import {PATHS} from 'navigation/constants';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { deleteVehicle} from 'services/vehicles';
-import styled from 'styled-components'
+import {useHistory} from 'react-router-dom';
+import {deleteVehicle} from 'services/vehicles';
+import styled from 'styled-components';
 
 import {COLUMNS} from './constants';
 import {formatVehicles} from './utils';
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
   },
   container: {
     maxHeight: 440,
-  }
+  },
 });
 
 const Container = styled.div`
@@ -32,37 +32,36 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
-`
+  justify-content: center;
+`;
 
 function VehiclesList() {
   const history = useHistory();
-  const [vehicles, setVehicles]= useVehicles();
+  const [vehicles, setVehicles] = useVehicles();
 
   const classes = useStyles();
   const rows = formatVehicles(vehicles.data);
 
   const handleDeleteVehicle = (id) => () => {
-    deleteVehicle(id)
-      .then((response) => {
-        if (response.ok) {
-          const vehiclesCopy = [...vehicles.data];
-          const toDeleteIndex = vehicles.data?.findIndex(
-            (vehicle) => vehicle._id === id,
-          );
-          
-          vehiclesCopy.splice(toDeleteIndex, 1)
+    deleteVehicle(id).then((response) => {
+      if (response.ok) {
+        const vehiclesCopy = [...vehicles.data];
+        const toDeleteIndex = vehicles.data?.findIndex(
+          (vehicle) => vehicle._id === id,
+        );
 
-          setVehicles({
-            data: vehiclesCopy,
-          });
-        }
-      })
+        vehiclesCopy.splice(toDeleteIndex, 1);
+
+        setVehicles({
+          data: vehiclesCopy,
+        });
+      }
+    });
   };
 
   const handleEditVehicle = (id) => () => {
-    history.push(`${PATHS.VEHICLE_FORM}/${id}`)
-  }
+    history.push(`${PATHS.VEHICLE_FORM}/${id}`);
+  };
 
   if (vehicles.fetching) {
     return (
@@ -75,7 +74,11 @@ function VehiclesList() {
   if (vehicles.loaded && vehicles.data) {
     return (
       <Container>
-        <Button variant="contained" color="primary" onClick={() => history.replace('/formulario-vehiculo')}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.replace('/formulario-vehiculo')}
+        >
           Crear
         </Button>
         <Paper className={classes.root}>
@@ -88,9 +91,7 @@ function VehiclesList() {
                       {label}
                     </TableCell>
                   ))}
-                  <TableCell key="actions">
-                    Acciones
-                  </TableCell>
+                  <TableCell key="actions">Acciones</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -102,10 +103,18 @@ function VehiclesList() {
                         return <TableCell key={column.id}>{value}</TableCell>;
                       })}
                       <TableCell>
-                        <Button variant="contained" color="primary" onClick={handleEditVehicle(row.id)}>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={handleEditVehicle(row.id)}
+                        >
                           Editar
                         </Button>
-                        <Button variant="contained" color="secondary" onClick={handleDeleteVehicle(row.id)}>
+                        <Button
+                          variant="contained"
+                          color="secondary"
+                          onClick={handleDeleteVehicle(row.id)}
+                        >
                           Eliminar
                         </Button>
                       </TableCell>

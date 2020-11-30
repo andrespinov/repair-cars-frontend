@@ -2,7 +2,7 @@ import {actionCreators} from '../login/actions';
 
 const initialState = {
   token: null,
-  user: ''
+  user: '',
 };
 
 const reducer = (state = initialState, {type, payload, username}) => {
@@ -11,13 +11,13 @@ const reducer = (state = initialState, {type, payload, username}) => {
       return {
         ...state,
         token: payload,
-        user: username
+        user: username,
       };
-      case actionCreators.LOGOUT:
+    case actionCreators.LOGOUT:
       return {
         ...state,
         token: null,
-        user: ''
+        user: '',
       };
     default:
       return state;
