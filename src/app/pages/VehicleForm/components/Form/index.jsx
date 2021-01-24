@@ -1,6 +1,7 @@
-import {Grid} from '@material-ui/core';
+import {Grid,Link} from '@material-ui/core';
 import { Formik } from 'formik'
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { Button, Input } from '../../../../components';
@@ -25,6 +26,7 @@ const emptyVehicle = {
 };
 
 const Form = ({vehicle, onSubmit, onDelete, saveLoading, deleteLoading, error}) => {
+  const history = useHistory()
   return (
     <FormContainer>
       <Formik
@@ -35,6 +37,9 @@ const Form = ({vehicle, onSubmit, onDelete, saveLoading, deleteLoading, error}) 
       >
         {({values, errors, touched, handleSubmit, setFieldValue}) => (
           <div className='form'>
+            <Link onClick={() => history.push('/vehicles')}>
+              <span>&larr; </span>Lista de vehículos
+            </Link>
             <div className='header'>
               <h1>{vehicle ? 'Editar Vehículo' : 'Agregar Vehículo'}</h1>
             </div>

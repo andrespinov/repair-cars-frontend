@@ -8,7 +8,7 @@ const FormContainer = styled.div`
   .form {
     width: 100%;
     max-width: 800px;
-    margin: 0 20px;
+    margin: 50px 20px 0;
   }
   .header {
     margin-bottom: 30px;
