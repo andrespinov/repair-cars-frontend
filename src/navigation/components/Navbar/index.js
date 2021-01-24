@@ -65,8 +65,11 @@ function Navbar() {
         </Typography>
         {isAuthenticated && (
           <>
-            <Link to="/vehicles" style={{color: '#fff', fontWeight: 500, textDecoration: 'none'}}>
+            <Link to="/vehicles" style={{color: '#fff', fontWeight: 500, textDecoration: 'none', marginRight: '15px'}}>
               Vehículos
+            </Link>
+            <Link to="/owners" style={{color: '#fff', fontWeight: 500, textDecoration: 'none'}}>
+              Propietarios
             </Link>
             <IconButton
               edge="end"
