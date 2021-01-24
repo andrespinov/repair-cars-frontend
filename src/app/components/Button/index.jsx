@@ -1,5 +1,6 @@
-import React from 'react'
 import {Button as MaterialButton} from '@material-ui/core'
+import React from 'react'
+
 import Loading from '../Loading'
 
 const Button = ({title, loading, ...props}) => {
