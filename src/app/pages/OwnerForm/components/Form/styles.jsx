@@ -24,6 +24,7 @@ const FormContainer = styled.div`
   .buttons-container {
     display: flex;
     margin-top: 20px;
+    justify-content: space-between;
   }
 `
 

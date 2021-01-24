@@ -23,6 +23,10 @@ const VehicleForm = () => {
 
   const {user} = useSelector((state) => state.authReducer);
   const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
+  
+  const onRedirect = () => {
+    history.push('/vehicles');
+  }
 
   const onCreate = (vehicle) => {
     setUpdateStatus({ fetching: true });
@@ -33,7 +37,7 @@ const VehicleForm = () => {
           data: response.data,
           error: null
         })
-        history.push('/vehicles');
+        onRedirect();
       }
     }).catch(error => {
       setUpdateStatus({ error: error, fetching: false, data: null })
@@ -49,7 +53,7 @@ const VehicleForm = () => {
           data: response.data,
           error: null
         })
-        history.push('/vehicles');
+        onRedirect();
       }
     }).catch(error => {
       setUpdateStatus({ error: error, fetching: false, data: null })
@@ -82,6 +86,7 @@ const VehicleForm = () => {
         onSubmit={isEditMode ? onUpdate : onCreate}
         onDelete={() => setOpenConfirmDialog(true)}
         error={updateStatus.error}
+        handleCancel={onRedirect}
       />
       {Boolean(vehicleToEdit) && (
         <ConfirmationDialog

@@ -24,7 +24,7 @@ const emptyOwner = {
   email: ''
 };
 
-const Form = ({owner, onSubmit, onDelete, saveLoading, deleteLoading, error}) => {
+const Form = ({owner, onSubmit, saveLoading, error, handleCancel}) => {
   return (
     <FormContainer>
       <Formik
@@ -87,15 +87,12 @@ const Form = ({owner, onSubmit, onDelete, saveLoading, deleteLoading, error}) =>
             </Grid>
             {Boolean(error) && <div className='error-message'><span>{error}</span></div>}
             <div className='buttons-container'>
-              {Boolean(owner) && (
-                <Button
-                  className='form-button'
-                  title='Eliminar'
-                  onClick={onDelete}
-                  loading={deleteLoading}
-                  style={{ marginRight: 20 }}
-                />
-              )}
+              <Button
+                className='form-button'
+                title='Cancelar'
+                onClick={handleCancel}
+                variant='outlined'
+              />
               <Button
                 className='form-button'
                 title='Guardar'
