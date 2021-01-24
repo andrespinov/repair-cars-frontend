@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import React from 'react'
+import {useDispatch} from 'react-redux';
+import {logout} from 'redux/login/actions'
 
 import useAuthState from '../../../app/hooks/useAuthState';
 
@@ -19,6 +21,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 function Navbar() {
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { isAuthenticated } = useAuthState()
   const classes = useStyles();
@@ -30,6 +33,11 @@ function Navbar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = () => {
+    dispatch(logout())
+    setAnchorEl(null)
+  }
 
   const isMenuOpen = Boolean(anchorEl);
 
@@ -43,8 +51,7 @@ function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
