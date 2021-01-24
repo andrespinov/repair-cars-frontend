@@ -3,7 +3,7 @@ import React from 'react'
 import { fetchOwners } from 'services/owners'
 
 function OwnerList() {
-  const { data } = useRequest({ service: fetchOwners })
+  const [{ data }] = useRequest({ service: fetchOwners })
 
   return (
     <ul>
