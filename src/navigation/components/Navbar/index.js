@@ -63,20 +63,22 @@ function Navbar() {
         <Typography variant="h6" className={classes.title}>
           Reparación de Vehículos
         </Typography>
-        <Link to="/vehicles" style={{color: '#fff', fontWeight: 500, textDecoration: 'none'}}>
-          Vehículos
-        </Link>
         {isAuthenticated && (
-          <IconButton
-          edge="end"
-          aria-label="account of current user"
-          aria-controls={menuId}
-          aria-haspopup="true"
-          onClick={handleProfileMenuOpen}
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
+          <>
+            <Link to="/vehicles" style={{color: '#fff', fontWeight: 500, textDecoration: 'none'}}>
+              Vehículos
+            </Link>
+            <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+            <AccountCircle />
+            </IconButton>
+          </>
         )}
         </Toolbar>
       </AppBar>
