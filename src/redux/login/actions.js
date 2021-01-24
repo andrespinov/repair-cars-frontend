@@ -1,3 +1,5 @@
+import api from 'config/api';
+
 import * as service from '../../services/login';
 
 const actionCreators = {
@@ -11,7 +13,8 @@ const login = (payload) => (dispatch) => {
   dispatch(loginRequest());
   return service.login(payload).then((response) => {
     if (response.data?.token) {
-      dispatch(loginSuccess(response.data.token, payload?.name));
+      dispatch(loginSuccess(response.data?.token, payload?.name));
+      api.setHeader('Authorization', `Bearer ${response.data?.token}`)
     } else {
       dispatch(loginFailure(response.data?.message));
     }
