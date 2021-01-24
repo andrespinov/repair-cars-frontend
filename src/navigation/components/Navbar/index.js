@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import React from 'react'
 import {useDispatch} from 'react-redux';
+import {Link} from 'react-router-dom'
 import {logout} from 'redux/login/actions'
 
 import useAuthState from '../../../app/hooks/useAuthState';
@@ -62,6 +63,9 @@ function Navbar() {
         <Typography variant="h6" className={classes.title}>
           Reparación de Vehículos
         </Typography>
+        <Link to="/vehicles" style={{color: '#fff', fontWeight: 500, textDecoration: 'none'}}>
+          Vehículos
+        </Link>
         {isAuthenticated && (
           <IconButton
           edge="end"
