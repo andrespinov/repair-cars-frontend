@@ -43,7 +43,7 @@ function useLazyRequest({
           status: REQUEST_STATUS.success
         })
 
-        if (onSuccess) onSuccess(response)
+        if (onSuccess) onSuccess(response, directPayload || payload)
       } else {
         setState({ data: null, error: errorSelector(response), status: REQUEST_STATUS.error })
         if (onFailure) onFailure(response)

@@ -10,7 +10,8 @@ export const PATHS = {
   LOGIN: '/login',
   VEHICLE_FORM: '/formulario-vehiculo',
   VEHICLE_ID_FORM: '/formulario-vehiculo/:id',
-  OWNERS: '/owners'
+  OWNERS: '/owners',
+  OWNER_FORM: '/formulario-propietario'
 };
 
 const MAIN_PUBLIC_PATH = PATHS.LOGIN;
