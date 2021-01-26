@@ -1,9 +1,9 @@
 import Home from 'app/pages/Home';
 import Login from 'app/pages/Login';
+import OwnerForm from 'app/pages/OwnerForm';
 import OwnerList from 'app/pages/OwnerList';
 import VehicleForm from 'app/pages/VehicleForm';
 import VehiclesList from 'app/pages/VehiclesList';
-import OwnerForm from 'app/pages/OwnerForm';
 
 export const PATHS = {
   VEHICLES: '/vehicles',
@@ -46,15 +46,13 @@ export const ROUTES = [
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
   },
   {
-<<<<<<< HEAD
     path: PATHS.OWNERS,
     component: OwnerList,
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
-  }
-=======
+  },
+  {
     path: PATHS.OWNER_FORM,
     component: OwnerForm,
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
   },
->>>>>>> b766271d31274682e36379c615782d1e27c60138
 ];
