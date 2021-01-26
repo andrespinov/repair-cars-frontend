@@ -18,6 +18,7 @@ export const ROUTES = [
   {
     path: PATHS.VEHICLES,
     component: VehiclesList,
+    redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
   },
   {
     path: PATHS.LOGIN,
