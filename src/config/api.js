@@ -12,7 +12,7 @@ const api = create({
 api.addRequestTransform(request => {
   const persistedAuth = JSON.parse(window.localStorage.getItem('persist:root'));
   const authtoken = JSON.parse(persistedAuth.authReducer).token;
-  request.headers['Authorization'] = `Bearer ${authtoken}`;
+  request.headers['Authorization'] = authtoken;
 })
 
 export default api;
