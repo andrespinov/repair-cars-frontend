@@ -1,5 +1,5 @@
-import useSetState from 'app/hooks/useSetState';
 import useOwners from 'app/hooks/useOwners';
+import useSetState from 'app/hooks/useSetState';
 import React, {useState} from 'react';
 import { useSelector } from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom';

@@ -1,5 +1,5 @@
 export const COLUMNS = [
-  {id: 'id', label: 'Id'},
+  {id: '_id', label: 'Id'},
   {id: 'name', label: 'Name'},
   {id: 'last_name', label: 'Apellido'},
   {id: 'dni', label: 'Cédula'},

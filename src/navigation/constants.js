@@ -11,6 +11,7 @@ export const PATHS = {
   LOGIN: '/login',
   VEHICLE_FORM: '/formulario-vehiculo',
   VEHICLE_ID_FORM: '/formulario-vehiculo/:id',
+  OWNER_ID_FORM: '/formulario-propietario/:id',
   OWNERS: '/owners',
   OWNER_FORM: '/formulario-propietario'
 };
@@ -38,6 +39,11 @@ export const ROUTES = [
   {
     path: PATHS.VEHICLE_ID_FORM,
     component: VehicleForm,
+    redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
+  },
+  {
+    path: PATHS.OWNER_ID_FORM,
+    component: OwnerForm,
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
   },
   {

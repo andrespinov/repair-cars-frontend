@@ -44,9 +44,10 @@ function OwnerList() {
   const [, removeOwner] = useLazyRequest({
     service: OwnerService.removeOwner,
     onSuccess: (_response, ownerId) => {
-      const nextOwners = data.filter(owner => owner.id !== ownerId)
-      setState(nextOwners)
-      setState()
+      const nextOwners = data.filter(owner => {
+        return owner._id !== ownerId
+      })
+      setState({ data: nextOwners })
     }
   })
 
@@ -101,14 +102,14 @@ function OwnerList() {
                         <Button
                           variant="contained"
                           color="primary"
-                          onClick={handleEditVehicle(row.id)}
+                          onClick={handleEditVehicle(row._id)}
                         >
                           Editar
                         </Button>
                         <Button
                           variant="contained"
                           color="secondary"
-                          onClick={handleDeleteOwer(row.id)}
+                          onClick={handleDeleteOwer(row._id)}
                         >
                           Eliminar
                         </Button>

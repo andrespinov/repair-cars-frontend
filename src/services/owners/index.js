@@ -2,11 +2,11 @@ import api from 'config/api'
 
 import PATHS from './constants'
 
-export const fetchOwners = () => api.get('/owners');
+export const fetchOwners = () => api.get('/owner');
 
 const OwnerService = {
-  fetchOwners: () => api.get('/owners'),
-  removeOwner: (id) => api.delete(`/owners/${id}`)
+  fetchOwners: () => api.get('/owner'),
+  removeOwner: (id) => api.delete(`/owner/${id}`)
 }
 
 export const updateOwner = (payload) =>
