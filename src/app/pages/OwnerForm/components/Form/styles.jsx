@@ -8,7 +8,7 @@ const FormContainer = styled.div`
   .form {
     width: 100%;
     max-width: 800px;
-    margin: 50px 20px 0;
+    margin: 0 20px;
   }
   .header {
     margin-bottom: 30px;
@@ -25,9 +25,6 @@ const FormContainer = styled.div`
     display: flex;
     margin-top: 20px;
     justify-content: space-between;
-  }
-  .actions-buttons {
-    display: flex;
   }
 `
 

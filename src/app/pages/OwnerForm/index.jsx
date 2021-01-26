@@ -1,36 +1,35 @@
 import useSetState from 'app/hooks/useSetState';
-import useVehicles from 'app/hooks/useVehicles';
+import useOwners from 'app/hooks/useOwners';
 import React, {useState} from 'react';
 import { useSelector } from 'react-redux'
 import {useHistory, useParams} from 'react-router-dom';
-import {createVehicle, updateVehicle, deleteVehicle} from 'services/vehicles';
+import {createOwner, updateOwner} from 'services/owners';
 
 import ConfirmationDialog from '../../components/ConfirmationDialog'
 
 import Form from './components/Form'
 
-const VehicleForm = () => {
+const OwnerForm = () => {
   const history = useHistory();
   const params = useParams();
-  const [vehicles] = useVehicles();
+  const [owners] = useOwners();
   const [updateStatus, setUpdateStatus] = useSetState();
-  const [deleteStatus, setDeleteStatus] = useSetState();
 
   const isEditMode = !!params.id;
-  const vehicleToEdit = isEditMode
-    ? vehicles.data?.find((vehicle) => vehicle._id === params.id)
+  const ownerToEdit = isEditMode
+    ? owners.data?.find((owner) => owner._id === params.id)
     : null;
 
   const {user} = useSelector((state) => state.authReducer);
   const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
   
   const onRedirect = () => {
-    history.push('/vehicles');
+    history.push('/owners');
   }
 
-  const onCreate = (vehicle) => {
+  const onCreate = (owner) => {
     setUpdateStatus({ fetching: true });
-    createVehicle({...vehicle, author: user}).then((response) => {
+    createOwner({...owner, author: user}).then((response) => {
       if (response.ok) {
         setUpdateStatus({
           fetching: false,
@@ -44,9 +43,9 @@ const VehicleForm = () => {
     })
   };
 
-  const onUpdate = (vehicle) => {
+  const onUpdate = (owner) => {
     setUpdateStatus({ fetching: true });
-    updateVehicle(vehicle).then((response) => {
+    updateOwner(owner).then((response) => {
       if (response.ok) {
         setUpdateStatus({
           fetching: false,
@@ -57,47 +56,20 @@ const VehicleForm = () => {
       }
     }).catch(error => {
       setUpdateStatus({ error: error, fetching: false, data: null })
-    })
-  };
-
-  const onDelete = () => {
-    setDeleteStatus({ fetching: true });
-    deleteVehicle(vehicleToEdit._id).then((response) => {
-      if (response.ok) {
-        setDeleteStatus({
-          fetching: false,
-          data: response.data,
-          error: null
-        })
-      }
-      setOpenConfirmDialog(false);
-      history.goBack();
-    }).catch(error => {
-      setDeleteStatus({ error: error, fetching: false, data: null })
     })
   };
 
   return (
     <div>
       <Form
-        vehicle={vehicleToEdit}
+        owner={ownerToEdit}
         saveLoading={updateStatus.fetching}
-        deleteLoading={deleteStatus.fetching}
         onSubmit={isEditMode ? onUpdate : onCreate}
-        onDelete={() => setOpenConfirmDialog(true)}
         error={updateStatus.error}
         handleCancel={onRedirect}
       />
-      {Boolean(vehicleToEdit) && (
-        <ConfirmationDialog
-          open={openConfirmDialog}
-          title="Eliminar Vehículo"
-          description={`Está seguro que desea eliminar el vehículo de placa ${vehicleToEdit?.plate}?`}
-          handleClose={onDelete}
-        />
-      )}
     </div>
   );
 };
 
-export default VehicleForm
+export default OwnerForm
