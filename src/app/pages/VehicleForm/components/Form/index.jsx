@@ -25,7 +25,7 @@ const emptyVehicle = {
   model: ''
 };
 
-const Form = ({vehicle, onSubmit, onDelete, saveLoading, deleteLoading, error}) => {
+const Form = ({vehicle, onSubmit, onDelete, saveLoading, deleteLoading, error, handleCancel}) => {
   const history = useHistory()
   return (
     <FormContainer>
@@ -92,21 +92,31 @@ const Form = ({vehicle, onSubmit, onDelete, saveLoading, deleteLoading, error}) 
             </Grid>
             {Boolean(error) && <div className='error-message'><span>{error}</span></div>}
             <div className='buttons-container'>
-              {Boolean(vehicle) && (
+              <div>
                 <Button
                   className='form-button'
-                  title='Eliminar'
-                  onClick={onDelete}
-                  loading={deleteLoading}
-                  style={{ marginRight: 20 }}
+                  title='Cancelar'
+                  onClick={handleCancel}
+                  variant='outlined'
                 />
-              )}
-              <Button
-                className='form-button'
-                title='Guardar'
-                onClick={handleSubmit}
-                loading={saveLoading}
-              />
+              </div>
+              <div className='actions-buttons'>
+                {Boolean(vehicle) && (
+                  <Button
+                    className='form-button'
+                    title='Eliminar'
+                    onClick={onDelete}
+                    loading={deleteLoading}
+                    style={{ marginRight: 20 }}
+                  />
+                )}
+                <Button
+                  className='form-button'
+                  title='Guardar'
+                  onClick={handleSubmit}
+                  loading={saveLoading}
+                />
+              </div>
             </div>
           </div>
         )}

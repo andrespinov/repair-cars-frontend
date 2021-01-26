@@ -2,6 +2,7 @@ import Home from 'app/pages/Home';
 import Login from 'app/pages/Login';
 import VehicleForm from 'app/pages/VehicleForm';
 import VehiclesList from 'app/pages/VehiclesList';
+import OwnerForm from 'app/pages/OwnerForm';
 
 export const PATHS = {
   VEHICLES: '/vehicles',
@@ -9,6 +10,7 @@ export const PATHS = {
   LOGIN: '/login',
   VEHICLE_FORM: '/formulario-vehiculo',
   VEHICLE_ID_FORM: '/formulario-vehiculo/:id',
+  OWNER_FORM: '/formulario-propietario',
 };
 
 const MAIN_PUBLIC_PATH = PATHS.LOGIN;
@@ -39,6 +41,11 @@ export const ROUTES = [
   {
     path: PATHS.VEHICLE_FORM,
     component: VehicleForm,
+    redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
+  },
+  {
+    path: PATHS.OWNER_FORM,
+    component: OwnerForm,
     redirectTo: (user) => (user ? undefined : MAIN_PUBLIC_PATH),
   },
 ];
